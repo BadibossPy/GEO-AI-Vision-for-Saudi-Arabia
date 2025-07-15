@@ -41,8 +41,42 @@ venv.bak/
 data/
 *.csv
 *.zip
+*.tif
+*.tiff
+*.jp2
+*.hdf5
+*.h5
+
+# Machine Learning / Neural Network files
+*.pkl
+*.pickle
+*.joblib
+*.model
+*.pth
+*.pt
+*.ckpt
+*.pb
+*.onnx
+*.weights
+*.hdf5
+*.h5
+models/
+checkpoints/
+logs/
+tensorboard/
+wandb/
+mlruns/
 
 # IDE / Editor specific
 .idea/
 .vscode/
-*.swp 
+*.swp
+
+# OS specific
+.DS_Store
+Thumbs.db
+
+# Temporary files
+*.tmp
+*.temp
+*.log 

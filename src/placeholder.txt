@@ -1,3 +1,0 @@
-This file is a placeholder.
-
-This directory can be used for any custom Python modules or helper functions that support the analysis in the main notebook. For example, `data_loader.py` or `model_builder.py`. 
