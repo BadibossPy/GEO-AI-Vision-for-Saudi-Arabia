@@ -1,0 +1,7 @@
+tensorflow
+geopandas
+rasterio
+scikit-learn
+matplotlib
+seaborn
+jupyterlab 
