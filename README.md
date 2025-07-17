@@ -1,55 +1,46 @@
-# Archaeological Feature Detection from Satellite Imagery
+# GeoArch: Archaeological Anomaly Detection
 
-Computer vision approach for identifying potential archaeological sites in satellite data.
+A proof-of-concept for detecting potential archaeological anomalies (e.g., buried structures) in raster imagery using statistical and computer vision techniques. This project demonstrates a foundational workflow for identifying rectangular patterns that differ from the surrounding terrain.
 
-## Overview
+For a detailed overview of the proposed framework and its application, see [**A Proposed Framework for AI-Assisted Archaeological Survey**](./ARTICLE.md).
 
-This project applies image processing techniques to detect rectangular anomalies in satellite imagery that may indicate buried archaeological structures. The approach combines edge detection, statistical analysis, and morphological operations.
+---
 
-## Implementation
+### Core Methodology
 
-### Core Algorithm
-- Gaussian filtering for noise reduction
-- Canny edge detection
-- Statistical anomaly detection (threshold: μ + 1.2σ)
-- Morphological operations (opening/closing)
-- Connected component analysis
-- Size-based filtering (min 500 pixels)
+The detection pipeline operates on single-band grayscale images and uses a multi-step process:
+1.  **Noise Reduction**: A Gaussian filter smooths the image.
+2.  **Edge & Anomaly Detection**: The algorithm combines a Canny edge detector with a statistical anomaly finder that flags pixels deviating significantly from the image's mean intensity.
+3.  **Component Analysis**: Detected pixels are grouped into components, which are then filtered by size to remove noise and isolate objects of interest.
 
-### Files
-- `notebooks/Archaeological_Feature_Detection.ipynb` - Main analysis
-- `src/archaeological_detection.py` - Standalone implementation
-- `requirements.txt` - Dependencies
+### Example Output
 
-## Usage
+The following shows the pipeline applied to a synthetic image with four buried structures.
 
-Install dependencies:
+| Input Grayscale Image | Detected Edges | Identified Anomalies | Final Detected Features |
+| :---: | :---: | :---: | :---: |
+| `[IMAGE_PLACEHOLDER_1]` | `[IMAGE_PLACEHOLDER_2]` | `[IMAGE_PLACEHOLDER_3]` | `[IMAGE_PLACEHOLDER_4]` |
+*Note: Replace placeholders with actual output images.*
+
+### Quick Start
+
 ```bash
+# Install dependencies
 pip install -r requirements.txt
+
+# Run on a synthetic image and show plot
+python -m geo_arch.cli --show
 ```
 
-Run analysis:
+To analyze your own grayscale image (e.g., a GeoTIFF):
 ```bash
-jupyter lab notebooks/Archaeological_Feature_Detection.ipynb
+python -m geo_arch.cli path/to/your/image.tif
 ```
 
-Or run standalone:
-```bash
-python src/archaeological_detection.py
-```
+### Project Roadmap
 
-## Results
-
-The algorithm processes synthetic satellite data and identifies potential archaeological features using computer vision techniques. Results include feature detection, confidence scoring, and visualization.
-
-## Technical Stack
-
-- Python 3.8+
-- scikit-image (image processing)
-- scikit-learn (clustering)
-- numpy/scipy (numerical computing)
-- matplotlib (visualization)
-
-## Application
-
-Designed for integration with real satellite data sources (Sentinel-2) and archaeological databases (EAMENA). The modular approach allows for scaling to large geographic areas. 
+This repository is the first step in a larger vision. The planned development path is:
+- [x] **Phase 1: Core Algorithm**: Develop and validate the fundamental detection logic on synthetic data.
+- [ ] **Phase 2: Real-World Data Validation**: Test the algorithm on open-source satellite or drone imagery of known archaeological sites.
+- [ ] **Phase 3: Deep Learning Model**: Implement a U-Net or similar semantic segmentation model for improved accuracy and generalization.
+- [ ] **Phase 4: Scalable Deployment**: Package the tool for large-scale analysis on cloud infrastructure. 
